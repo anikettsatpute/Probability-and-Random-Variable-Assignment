@@ -13,7 +13,7 @@ def v_cdf(i):
 x = np.linspace(0,10,100)
 simlen = int(1e6)
 err = []
-randvar = np.loadtxt('../Data/6_1.dat',dtype='double')
+randvar = np.loadtxt('../Data/6_1_2.dat',dtype='double')
 for i in range(0,100):
 	err_ind = np.nonzero(randvar < x[i])
 	err_n = np.size(err_ind)
@@ -21,7 +21,7 @@ for i in range(0,100):
 
 x_2 =np.linspace(0,10,100)
 
-vec_cdf = scipy.vectorize(v_cdf,otypes=[np.float64])
+vec_cdf = np.vectorize(v_cdf,otypes=[np.float64])
 
 plt.plot(x_2.T,vec_cdf(x),color="blue",label="Theoretical")
 plt.scatter(x.T,err,color="red",label="Simulated")
